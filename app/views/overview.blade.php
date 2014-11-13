@@ -16,7 +16,7 @@
 
 			
 			@for ($i=1; $i <= 5 ; $i++)
-		      <span class="stars fa fa-star{{ ($i <= $item->rating) ? '' : '-o' }}"></span>
+		      <span class="stars fa fa-star{{ (($i - 0.5) <= round($item->rating, 1)) ? '' : '-o' }}"></span>
 		    @endfor
 
 		    - {{ round($item->rating, 1) }} sterren, {{ $item->amount }} beoordelingen
