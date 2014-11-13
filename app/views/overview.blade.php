@@ -12,9 +12,14 @@
 		<div class="panel-body">
 			Path: {{ HTML::link(URL::route('overviewData', $item->id), $item->path) }}
 
-			<hr>
+			{{ HTML::image('http://placehold.it/400x250', null, ['class' => 'img-responsive img-rounded']) }}
 
-			Rating: {{ round($item->rating, 2) }}, {{ $item->amount }} ratings 
+			
+			@for ($i=1; $i <= 5 ; $i++)
+		      <span class="stars fa fa-star{{ ($i <= $item->rating) ? '' : '-o' }}"></span>
+		    @endfor
+
+		    - {{ round($item->rating, 1) }} sterren, {{ $item->amount }} beoordelingen
 		</div>
 	</div>
 </div>

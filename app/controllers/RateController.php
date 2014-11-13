@@ -60,6 +60,13 @@ class RateController extends \BaseController {
 		$selectedId = Input::get('selectedId');
 		$rating = Input::get('rating');
 
+		$validator = Validator::make(['rating' => $rating], ['rating' => 'required']);
+
+		if($validator->fails()) {
+			return 	Redirect::back()
+					->with('message', 'Geef alsjeblieft een beoordeling aan deze data!');
+		}
+
 		$selectedData = $this->dataModel->find($id);
 
 		$result = $this->calculateRating($selectedData, $rating);
