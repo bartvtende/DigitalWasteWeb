@@ -46,7 +46,7 @@ class RateController extends \BaseController {
 		$data = $this->dataModel->find($selectedData->data_id);
 
 		// Render a view with the data
-		return  View::make('data')
+		return  View::make('data.data')
 				->with('data', $data)
 				->with('selectedData', $selectedData);
 	}

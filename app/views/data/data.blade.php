@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('...layout.master')
 
 @section('content')
 
@@ -9,7 +9,9 @@
 		</div>
 
 		<div class="panel-body"> 
-			{{ $data->path }}
+			<div>
+			@yield('data')
+			</div>
 
 			<form action="{{ URL::route('rateData') }}" method="post">
 			<input type="text" class="form-control" name="rating">
