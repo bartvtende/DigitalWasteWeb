@@ -52,22 +52,24 @@ class FileController extends \BaseController {
     // Extracts plain text from .doc document and places it in string.
     public function handleDoc($data) {
         $DocumentPath=URL::asset($data->path);
-//        $this->parseWord($DocumentPath);
+        $docObj = new Filetotext($DocumentPath);
+        $text = $docObj->convertToText();
+////        $this->parseWord($DocumentPath);
+////        dd($DocumentPath);
+//        $word = new COM("word.application") or die("Unable to instantiate application object");
+//        $wordDocument = new COM("word.document") or die("Unable to instantiate document object");
+//        $word->Visible = 0;
+//        $wordDocument = $word->Documents->Open($DocumentPath);
 //        dd($DocumentPath);
-        $word = new COM("word.application") or die("Unable to instantiate application object");
-        $wordDocument = new COM("word.document") or die("Unable to instantiate document object");
-        $word->Visible = 0;
-        $wordDocument = $word->Documents->Open($DocumentPath);
-        dd($DocumentPath);
-        $HTMLPath = substr_replace($DocumentPath, 'html', -3, 3);
-        dd($HTMLPath);
-        $wordDocument->SaveAs($HTMLPath, 3);
-        $wordDocument = null;
-        $word->Quit();
-        $word = null;
-        //Convert HTML file at HTMLPath to string from 0th character with a charlimit of $charlimit
-        $text = file_get_contents($HTMLPath, NULL, NULL, 0, $this->charlimit);
-//        unlink($HTMLPath);
+//        $HTMLPath = substr_replace($DocumentPath, 'html', -3, 3);
+//        dd($HTMLPath);
+//        $wordDocument->SaveAs($HTMLPath, 3);
+//        $wordDocument = null;
+//        $word->Quit();
+//        $word = null;
+//        //Convert HTML file at HTMLPath to string from 0th character with a charlimit of $charlimit
+//        $text = file_get_contents($HTMLPath, NULL, NULL, 0, $this->charlimit);
+////        unlink($HTMLPath);
         return $text;
 
     }
