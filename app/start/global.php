@@ -79,3 +79,10 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+//// 404 message for httpnotfoundexception
+//App::missing(function($e) {
+//    $url = Request::fullUrl();
+//    Log::warning("404 for URL: $url");
+//    return Response::view('errors.notfound', array(), 404);
+//});

@@ -9,8 +9,8 @@
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
     {{ HTML::style('css/bootstrap.min.css') }}
-    {{ HTML::style('css/styles.css') }}
-    {{ HTML::style('css/font-awesome.min.css') }}
+    {{ HTML::style('css/style.css') }}
+    {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css') }}
     @yield('css')
 
     @yield('scripts')

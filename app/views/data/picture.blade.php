@@ -1,7 +1,7 @@
-@extends('data')
+@extends('data.data')
 
 @section('data')
 
-<img scr={{$data->path}}>
+{{ HTML::image($data->path, $data->path,array('style' => 'width:100%;')) }}
 
 @stop

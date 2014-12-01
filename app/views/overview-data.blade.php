@@ -10,9 +10,13 @@
 		<div class="panel-body">
 			Path: {{ $data->path }}
 
-			<hr>
+			{{ HTML::image('http://placehold.it/1024x600', null, ['class' => 'img-responsive img-rounded']) }}
 
-			Rating: {{ round($data->rating, 2) }}, {{ $data->amount }} ratings
+			@for ($i=1; $i <= 5 ; $i++)
+		      <span class="stars fa fa-star{{ (($i - 0.5) <= $data->rating) ? '' : '-o' }}"></span>
+		    @endfor
+
+		    - {{ round($data->rating, 1) }} sterren, {{ $data->amount }} beoordelingen
 		</div>
 	</div>
 </div>

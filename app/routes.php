@@ -1,7 +1,7 @@
 <?php
 
-// Temp route
-Route::get('testdata/{data_id}', ['as' => 'showFile', 'uses' => 'FileController@showFile']);
+// Temp routes
+Route::get('testdata/{data_id}', ['as' => 'testdata', 'uses' => 'FileController@showFile']);
 
 // Rating routes
 Route::get('/', ['as' => 'showRandomData', 'uses' => 'RateController@serveData']);
