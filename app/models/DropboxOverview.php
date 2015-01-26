@@ -202,7 +202,7 @@ class DropboxOverview
 
                 $gem_verd_rating[0]->$key = (($value * $oldAmountOfParticipants) + $verd_rating[$key]) / $amountOfParticipants;
             } else {
-                $gem_verd_rating[0]->$key = 0;
+                $gem_verd_rating[0]->$key = (($value * $oldAmountOfParticipants) + 0) / $amountOfParticipants;
             }
         }
 
