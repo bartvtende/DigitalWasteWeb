@@ -1,27 +1,48 @@
 <?php
 
-class OverviewController extends \BaseController {
-	
-	protected $dataModel;
-	protected $selectedModel;
+class OverviewController extends \BaseController
+{
 
-	public function __construct() {
-		$this->dataModel 		= new Data();
-		$this->selectedModel 	= new Selected();
-	}
+    /**
+     * Serves and results/overview page to the user
+     * The page is populated with the users data if the user has filled in the survey
+     *
+     * @param null $id
+     * @return mixed
+     */
+    public function overviewDropbox($id = null)
+    {
+        $dropboxOverview = new DropboxOverview();
 
-	public function serveOverview() {
-		$data = $this->dataModel->take(9)->orderBy('rating', 'desc')->get();
-		
-		return  View::make('overview')
-				->with('data', $data);
-	}
+        // Initialize the user variable
+        $user = null;
 
-	public function serveOverviewData($id) {
-		$data = $this->dataModel->find($id);
+        // Try to find the user
+        if (!is_null($id)) {
+            $user = DropboxUser::find($id);
+        }
 
-		return  View::make('overview-data')
-				->with('data', $data);
-	}
-	
+        if (!is_null($user)) {
+            // Check if the requested user id is equal to the session user id
+            if ($user->id == Session::get('user_id')) {
+                // Get the results for the user
+                $userResults = DropboxResult::where('user_id', $id)->first();
+
+                // Render overview view for a non-participant
+                $results = $dropboxOverview->overview();
+
+                // Render overview view for a participant
+                return View::make('digitalwaste.overview')
+                    ->with('userResults', $userResults)
+                    ->with('results', $results);
+            }
+        }
+        $results = $dropboxOverview->overview();
+
+        // Render overview view for a non-participant
+        return View::make('digitalwaste.overview')
+            ->with('results', $results);
+
+    }
+
 }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Digital Waste</title>
+    <meta name="viewport" content="width=device-width">
+
+    <?php echo HTML::style('honours-digitalwaste/css/bootstrap.min.css'); ?>
+
+    <?php echo HTML::style('honours-digitalwaste/css/font-awesome.min.css'); ?>
+
+    <?php echo HTML::style('honours-digitalwaste/css/styles.css'); ?>
+
+</head>
+<body>
+    <?php echo $__env->yieldContent('content'); ?>
+
+    <?php echo $__env->yieldContent('scripts'); ?>
+</body>
+</html>

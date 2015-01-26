@@ -1,0 +1,53 @@
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: 700;
+    color: #007ddb;
+    padding-top: 30px;
+}
+
+.emphasize {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 20px;
+}
+
+img {
+    max-height: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.btn {
+    margin-bottom: 10px;
+}
+
+.icon {
+    padding-top: 10px;
+    padding-bottom: 15px;
+    color: #667c91;
+}
+
+body {
+    background-color: #47525d;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.starrr {
+    display: inline-block;
+}
+
+.starrr i {
+    font-size: 40px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    cursor: pointer;
+    color: #d17581;
+}

@@ -1,0 +1,75 @@
+<?php $__env->startSection('content'); ?>
+    <div class="col-md-9 text-center">
+        <?php if($file['category'] == 'document'): ?>
+            <iframe src="https://docs.google.com/gview?url=<?php echo asset($file['write_path']); ?>&embedded=true" style="width:100%; height:500px;" frameborder="0"></iframe>
+        <?php endif; ?>
+
+        <?php if($file['category'] == 'image'): ?>
+            <img src="<?php echo asset($file['write_path']); ?>" class="img-responsive"/>
+        <?php endif; ?>
+
+        <?php if($file['category'] == 'video'): ?>
+            <video width="100%" height="500" controls>
+                <?php if($file['extension'] == mp4): ?>
+                    <source src="<?php echo asset($file['write_path']); ?>" type="video/mp4">
+                <?php elseif($file['extension'] == ogg): ?>
+                    <source src="<?php echo asset($file['write_path']); ?>" type="video/ogg">
+                <?php else: ?>
+                    <source src="<?php echo asset($file['write_path']); ?>" type="video/webm">
+                <?php endif; ?>
+                Your browser does not support the video tag.
+            </video>
+        <?php endif; ?>
+
+        <?php if(is_null($file['category'])): ?>
+            <h2>Dit bestand wordt helaas niet ondersteund, ga naar het volgende bestand.</h2>
+        <?php endif; ?>
+
+        <form method="post">
+            <div class="form-group" action="<?php echo route('rate-dropbox', $file->user_id); ?>">
+                <div class="starrr" data-connected-input="rating"></div>
+                <input type="hidden" name="rating" />
+
+                <!-- Error message handling -->
+                <?php if(isset($message)): ?>
+                    <p><?php echo $message; ?></p>
+                <?php endif; ?>
+            </div>
+
+            <br />
+
+            <button class="btn btn-lg btn-info">Volgende <i class="fa fa-angle-right"></i> </button>
+        </form>
+    </div>
+
+    <div class="col-md-3 right-panel">
+        <h3 class="text-info">Bestandsnaam</h3>
+        <p><?php echo $file['filename']; ?></p>
+
+        <h3 class="text-info">Extensie</h3>
+        <p><?php echo $file['extension']; ?></p>
+
+        <h3 class="text-info">Bestandsgrootte</h3>
+        <p><?php echo $file['size']; ?></p>
+
+        <h3 class="text-info">Maplocatie</h3>
+        <p><?php echo $file['folder']; ?></p>
+
+        <h3 class="text-info">Type bestand</h3>
+        <p><?php echo $file['category']; ?></p>
+
+        <h3 class="text-info">Aangemaakt op</h3>
+        <p><?php echo date("d-m-Y H:i", strtotime($file['created'])); ?></p>
+
+        <h3 class="text-info">Laatst gewijzigd op</h3>
+        <p><?php echo date("d-m-Y H:i", strtotime($file['updated'])); ?></p>
+    </div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+    <?php echo HTML::script('https://code.jquery.com/jquery-1.11.1.min.js'); ?>
+
+    <?php echo HTML::script('honours-digitalwaste/js/starrr.min.js'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('digitalwaste.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
