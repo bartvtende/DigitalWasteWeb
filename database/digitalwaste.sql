@@ -1,25 +1,32 @@
-/*
-Navicat MySQL Data Transfer
+-- phpMyAdmin SQL Dump
+-- version 4.0.10deb1
+-- http://www.phpmyadmin.net
+--
+-- Machine: localhost
+-- Genereertijd: 27 jan 2015 om 04:09
+-- Serverversie: 5.5.40-0ubuntu0.14.04.1
+-- PHP-versie: 5.5.9-1ubuntu4.5
 
-Source Server         : Localhost
-Source Server Version : 50621
-Source Host           : localhost:3306
-Source Database       : digitalwaste
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
-Target Server Type    : MYSQL
-Target Server Version : 50621
-File Encoding         : 65001
 
-Date: 2015-01-26 22:24:39
-*/
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
-SET FOREIGN_KEY_CHECKS=0;
+--
+-- Databank: `digitalwaste`
+--
 
--- ----------------------------
--- Table structure for dropbox_files
--- ----------------------------
-DROP TABLE IF EXISTS `dropbox_files`;
-CREATE TABLE `dropbox_files` (
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `dropbox_files`
+--
+
+CREATE TABLE IF NOT EXISTS `dropbox_files` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `path` text NOT NULL,
@@ -36,17 +43,15 @@ CREATE TABLE `dropbox_files` (
   `write_path` varchar(255) DEFAULT NULL,
   `rating` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=425 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=545 ;
 
--- ----------------------------
--- Records of dropbox_files
--- ----------------------------
+-- --------------------------------------------------------
 
--- ----------------------------
--- Table structure for dropbox_results
--- ----------------------------
-DROP TABLE IF EXISTS `dropbox_results`;
-CREATE TABLE `dropbox_results` (
+--
+-- Tabelstructuur voor tabel `dropbox_results`
+--
+
+CREATE TABLE IF NOT EXISTS `dropbox_results` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `verd_extensies` text NOT NULL,
@@ -55,25 +60,27 @@ CREATE TABLE `dropbox_results` (
   `gem_rating` float NOT NULL,
   `verd_rating` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
 
--- ----------------------------
--- Records of dropbox_results
--- ----------------------------
-INSERT INTO `dropbox_results` VALUES ('0', '0', '{\"document\":0,\"image\":0,\"video\":0}', '0', '', '0', '{\"document\":3.3768272934173,\"image\":2.6250000000002,\"video\":0}');
-INSERT INTO `dropbox_results` VALUES ('37', '98', '{\"document\":2,\"image\":0,\"video\":0}', '575112', '2010-06-09 19:39:30', '3.5', '{\"document\":3.5,\"image\":0,\"video\":0}');
+--
+-- Gegevens worden uitgevoerd voor tabel `dropbox_results`
+--
 
--- ----------------------------
--- Table structure for dropbox_users
--- ----------------------------
-DROP TABLE IF EXISTS `dropbox_users`;
-CREATE TABLE `dropbox_users` (
+INSERT INTO `dropbox_results` (`id`, `user_id`, `verd_extensies`, `gem_bestandsgrootte`, `eerst_geupload`, `gem_rating`, `verd_rating`) VALUES
+(0, 0, '{"document":0,"image":0,"video":0}', 0, '', 0, '{"document":0,"image":0,"video":0}');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `dropbox_users`
+--
+
+CREATE TABLE IF NOT EXISTS `dropbox_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=114 ;
 
--- ----------------------------
--- Records of dropbox_users
--- ----------------------------
-INSERT INTO `dropbox_users` VALUES ('98', 'Bart van \'t Ende');
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

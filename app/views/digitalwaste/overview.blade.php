@@ -4,7 +4,10 @@
     <div class="container">
 
         <h1>Uitkomst onderzoek Digital Waste</h1>
-        <p class="emphasize">Er hebben al <b>{{ $results['amountOfParticipants']-1 }}</b> mensen deelgenomen aan dit onderzoek, bedankt!</b></p>
+
+        @if (isset($results))
+
+        <p class="emphasize">Er hebben al <b>{{ $results['amountOfParticipants'] }}</b> mensen deelgenomen aan dit onderzoek, bedankt!</b></p>
 
         <div class="row">
             <div class="col-md-4">
@@ -103,12 +106,18 @@
             <a href="{{ route('home') }}" class="btn btn-info btn-lg"><i class="fa fa-angle-left"></i> Terug naar de homepage</a>
         </div>
     </div>
+    @else
+        <h2>Er heeft nog niemand meegedaan, wil jij de eerste zijn?</h2>
+        <br />
+        <a href="{{ route('home') }}" class="btn btn-lg btn-info">Ga terug naar de homepage!</a>
+    @endif
 @endsection
 
 @section('scripts')
+    @if (isset($results))
     <?php
-        $extensies = json_decode($results['verd_extensies'])[0];
-        $ratings = json_decode($results['verd_rating'])[0];
+        $extensies = json_decode($results['verd_extensies']);
+        $ratings = json_decode($results['verd_rating']);
         if (isset($userResults)) {
             $extensies_single = json_decode($userResults['verd_extensies']);
             $ratings_single = json_decode($userResults['verd_rating']);
@@ -174,4 +183,5 @@
 
         }
     </script>
+    @endif
 @endsection

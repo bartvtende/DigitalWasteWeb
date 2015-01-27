@@ -20,7 +20,11 @@ class DropboxOverview
         // Find the amount of participants (records in the DB)
         $amountOfParticipants = DropboxResult::count();
 
-        $results['amountOfParticipants'] = $amountOfParticipants;
+        $results['amountOfParticipants'] = $amountOfParticipants-1;
+
+        if ($results['amountOfParticipants'] == 0) {
+            $results = null;
+        }
 
         return $results;
     }
@@ -168,8 +172,8 @@ class DropboxOverview
     private function calculateVerdelingen($files, $averageResults, $amountOfParticipants)
     {
         // Parses the JSON string into an array
-        $gem_verd_extensies = json_decode($averageResults['verd_extensies']);
-        $gem_verd_rating = json_decode($averageResults['verd_rating']);
+        $gem_verd_extensies = json_decode($averageResults->verd_extensies);
+        $gem_verd_rating = json_decode($averageResults->verd_rating);
 
         $categories = ['document', 'image', 'video'];
 
@@ -190,19 +194,20 @@ class DropboxOverview
 
         $oldAmountOfParticipants = $amountOfParticipants - 1;
 
+
         // Store the new averages
-        foreach ($gem_verd_extensies[0] as $key => $value) {
-            $gem_verd_extensies[0]->$key = (($value * $oldAmountOfParticipants) + $verd_extensies[$key]) / $amountOfParticipants;
+        foreach ($gem_verd_extensies as $key => $value) {
+            $gem_verd_extensies->$key = (($value * $oldAmountOfParticipants) + $verd_extensies[$key]) / $amountOfParticipants;
         }
 
-        foreach ($gem_verd_rating[0] as $key => $value) {
+        foreach ($gem_verd_rating as $key => $value) {
             if ($amountOfCategories[$key] != 0) {
                 // Get the average
                 $verd_rating[$key] /= $amountOfCategories[$key];
 
-                $gem_verd_rating[0]->$key = (($value * $oldAmountOfParticipants) + $verd_rating[$key]) / $amountOfParticipants;
+                $gem_verd_rating->$key = (($value * $oldAmountOfParticipants) + $verd_rating[$key]) / $amountOfParticipants;
             } else {
-                $gem_verd_rating[0]->$key = (($value * $oldAmountOfParticipants) + 0) / $amountOfParticipants;
+                $gem_verd_rating->$key = (($value * $oldAmountOfParticipants) + 0) / $amountOfParticipants;
             }
         }
 
