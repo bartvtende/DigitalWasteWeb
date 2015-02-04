@@ -14,9 +14,9 @@ class CrawlerController extends \BaseController
         $result = $dropbox->check();
 
         if ($result instanceof Dropbox\Client) {
-            // Get 15 random items from the users Dropbox
+            // Get 10 random items from the users Dropbox
             $crawler = new DropboxCrawler();
-            $redirectRoute = $crawler->crawl($result, 15, 10);
+            $redirectRoute = $crawler->crawl($result, 10, 10);
 
             // Redirect to the given route
             if (is_array($redirectRoute)) {

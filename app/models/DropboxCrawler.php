@@ -82,7 +82,7 @@ class DropboxCrawler
         }
 
         // Supported file types
-        $types = ['doc', 'docx', 'rtf', 'txt', 'pdf', 'ppt', 'pptx', 'odt', 'odp', 'jpg', 'jpeg', 'png', 'bmp', 'gif', 'tiff', 'ico', 'mp4', 'ogg', 'webm'];
+        $types = ['doc', 'docx', 'rtf', 'txt', 'pdf', 'ppt', 'pptx', 'jpg', 'jpeg', 'png', 'bmp', 'gif', 'tiff', 'ico', 'mp4', 'ogg', 'webm'];
 
         // Check if the file is supported
         for ($i = 0; $i < count($randomFiles); $i++) {

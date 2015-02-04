@@ -37,7 +37,7 @@
                 ?>
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h3 class="text-info">Gemiddelde waardering</h3></div>
+                    <div class="panel-heading"><h3 class="text-info">Gemiddelde bestandsgrootte</h3></div>
                     <div class="panel-body">
                         @if (isset($userResults))
                             <h3>{{ formatBytes($userResults['gem_bestandsgrootte']) }}</h3>

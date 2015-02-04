@@ -94,7 +94,7 @@ class DropboxStore
     private function getCategory($extension)
     {
         $types = [
-            'document' => ['doc', 'docx', 'rtf', 'txt', 'pdf', 'ppt', 'pptx', 'odt', 'odp'],
+            'document' => ['doc', 'docx', 'rtf', 'txt', 'pdf', 'ppt', 'pptx'],
             'image' => ['jpg', 'jpeg', 'png', 'bmp', 'gif', 'tiff', 'ico'],
             'video' => ['mp4', 'ogg', 'webm']
         ];

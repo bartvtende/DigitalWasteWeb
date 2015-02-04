@@ -20,8 +20,8 @@ class Dropbox {
         $this->csrfTokenStore = new Dropbox\ArrayEntryStore($_SESSION, 'dropbox-auth-csrf-token');
 
         // Configuration settings for the Dropbox SDK
-        $this->dropboxKey       = 'xxx';
-        $this->dropboxSecret    = 'xxx';
+        $this->dropboxKey       = '';
+        $this->dropboxSecret    = '';
         $this->appName          = 'digitalwaste';
     }
 
